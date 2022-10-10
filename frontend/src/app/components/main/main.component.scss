@@ -1,0 +1,159 @@
+.empty {
+   text-align: center;
+}
+
+.toolbar {
+   button {
+      max-height: 70%;
+   }
+}
+
+.row.data:nth-of-type(odd) {
+   background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field input {
+  font-size: 14px;
+  width: 100vw;
+}
+
+.tenant {
+  text-align: center;
+  width: 390px;
+  margin: 0 auto;
+}
+
+.course-thumbnail {
+  width: 150px;
+  margin: 20px auto 0 auto;
+  display: block;
+}
+
+.scrolling-container {
+  // overflow: auto;
+  //max-height: 250px;
+  //max-width: 200px;
+}
+
+.phone-cell {
+  text-align: left;
+  margin: 10px auto;
+}
+
+.collapsed-detail {
+  display: none;
+}
+
+.duration-cell mat-icon {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.spinner-container {
+  height: 360px;
+  width: 390px;
+  position: fixed;
+}
+
+.tenants-table {
+  min-height: 360px;
+  margin-top: 10px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  tr:hover {
+    background: whitesmoke;
+    cursor: pointer;
+  }
+}
+
+mat-paginator {
+  width: 400px;
+  margin-bottom: 200px;
+}
+
+.spinner-container mat-spinner {
+  margin: 130px auto 0 auto;
+}
+
+.mat-column-seqNo {
+  width: 32px;
+  border-right: 1px solid black;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-description {
+  padding-left:20px;
+  text-align: left;
+}
+
+.mat-column-duration {
+  font-style: italic;
+}
+
+/* TABLE */
+
+div.material-table {
+  border-top: 2px solid lightgrey;
+  margin-top: 1rem;
+  padding: 0;
+
+  & table {
+    table-layout: fixed;
+  }
+
+  & .table-header {
+    height: 64px;
+    padding-left: 24px;
+    padding-right: 14px;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: flex;
+    -webkit-display: flex;
+    border-bottom: solid 1px #DDDDDD;
+    padding-bottom: 1rem;
+
+    & .actions {
+      display: -webkit-flex;
+      margin: 1rem;
+      display: flex;
+      align-items: center;
+
+      & .mat-form-field {
+        margin-left: 2rem;
+        &:first-of-type {
+          width: 250px;
+        }
+      }
+    }
+
+    & .btn-flat {
+      min-width: 36px;
+      padding: 0 8px;
+      margin-left: 0.5rem;
+    }
+
+    & i {
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 24px;
+    }
+  }
+
+  & .table-title {
+    font-size: 20px;
+    color: #000;
+  }
+}
+
+/* Dialog */
+
+
+

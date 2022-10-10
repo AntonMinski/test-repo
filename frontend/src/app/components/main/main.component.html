@@ -1,0 +1,91 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="row col-12">
+      <div class="col-11"></div>
+      <div class="col-1">
+        <button mat-raised-button (click)="logout()">
+          <mat-icon>logout</mat-icon></button>
+      </div>
+    </div>
+
+    <div id="admin" class="col s12">
+      <div class="card material-table">
+        <div class="table-header">
+          <span class="table-title">Tenants Datatable</span>
+          <div class="actions">
+            <button mat-raised-button class="modal-trigger waves-effect btn-flat" (click)="add()">
+              <i class="material-icons" >person_add</i></button>
+
+            <mat-form-field appearance="standard">
+              <mat-label>filter by name, phone or address</mat-label>
+              <input matInput [(ngModel)]="searchText" type="text" #input />
+              <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="col-2" appearance="standard">
+              <mat-label>filter by debt</mat-label>
+              <mat-select [(ngModel)]="filterMode" (ngModelChange)="applyFilter()">
+                <mat-option value="all">show all</mat-option>
+                <mat-option value="debt">with debt only</mat-option>
+                <mat-option value="clear">without debt</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   <div class="row">
+
+      <div>
+          <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+            <mat-spinner></mat-spinner>
+          </div>
+
+          <mat-table class='mat-elevation-z8' [dataSource]='dataSource'>
+            <ng-container matColumnDef='name'>
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef='let tenant'>{{tenant.name}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef='phone'>
+              <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+              <mat-cell class='phone-cell'
+                        *matCellDef='let tenant'>{{tenant.phone}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef='address'>
+              <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+              <mat-cell class='address-cell'
+                        *matCellDef='let tenant'>{{tenant.address}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef='debt'>
+              <mat-header-cell *matHeaderCellDef>Debt</mat-header-cell>
+              <mat-cell class='debt-cell'
+                        *matCellDef='let tenant'>{{tenant.debt}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef='actions'>
+              <mat-header-cell *matHeaderCellDef>actions</mat-header-cell>
+              <mat-cell class='actions-cell' *matCellDef='let tenant'>
+                <button mat-icon-button aria-label="Update Tenant" (click)="edit(tenant)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete Tenant" (click)="delete(tenant._id)">
+                  <mat-icon>highlight_off</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
+            <mat-row *matRowDef='let row; columns: displayedColumns'></mat-row>
+          </mat-table>
+        </div>
+
+         <ng-template #emptyBlock>
+            <div class="empty">
+               <div>no tenants</div>
+               <div>click + to add one</div>
+            </div>
+         </ng-template>
+   </div>
+</div>

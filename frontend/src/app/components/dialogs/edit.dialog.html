@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{data.mode}} {{name}}</h1>
+<div mat-dialog-content>
+   <form [formGroup]="editForm" #ngForm="ngForm" (ngSubmit)="save()">
+      <div>
+         <div>Name:</div>
+         <input type="text" formControlName="name" />
+         <div *ngIf="ngForm.submitted && editForm.controls.name.errors" class="invalid">
+            <div *ngIf="editForm.controls.name.errors?.['required']">missing name</div>
+         </div>
+      </div>
+      <div>
+         <div>Phone:</div>
+         <input type="text" formControlName="phone" />
+         <div *ngIf="ngForm.submitted && editForm.controls.phone.errors" class="invalid">
+            <div *ngIf="editForm.controls.phone.errors?.['required']">missing phone</div>
+         </div>
+      </div>
+      <div>
+         <div>Address:</div>
+         <input type="text" formControlName="address" />
+         <div *ngIf="ngForm.submitted && editForm.controls.address.errors" class="invalid">
+            <div *ngIf="editForm.controls.address.errors?.['required']">missing address</div>
+         </div>
+      </div>
+      <div>
+         <div>Debt:</div>
+         <input type="number" formControlName="debt" />
+      </div>
+
+      <mat-card-actions>
+         <button mat-raised-button type="submit">Save</button>
+         <button mat-raised-button type="reset" (click)="cancel()">Cancel</button>
+      </mat-card-actions>
+   </form>
+</div>

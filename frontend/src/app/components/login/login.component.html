@@ -1,0 +1,28 @@
+<mat-card class="card">
+   <mat-card-header>
+      <mat-card-title>Wellcome to your backoffice</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+      <form [formGroup]="loginForm" #ngForm="ngForm" (ngSubmit)="submit()">
+         <div>
+            <div>Email:</div>
+            <input type="text" formControlName="email" />
+            <div *ngIf="ngForm.submitted && loginForm.controls.email.errors" class="invalid">
+               <div *ngIf="loginForm.controls.email.errors?.['required']">email required</div>
+            </div>
+         </div>
+
+         <div>
+            <div>Password:</div>
+            <input type="password" formControlName="password" />
+            <div *ngIf="ngForm.submitted && loginForm.controls.password.errors" class="invalid">
+               <div *ngIf="loginForm.controls.password.errors?.['required']">password required</div>
+            </div>
+         </div>
+
+         <div>
+            <button mat-raised-button>Login</button>
+         </div>
+      </form>
+   </mat-card-content>
+</mat-card>
