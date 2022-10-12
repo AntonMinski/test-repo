@@ -1,5 +1,8 @@
-const getMongooseQuery = (query) => {
-    // const queryFieldsArray = []
+/* This service takes query from response (that query created at the frontend)
+and returns new object, which can be used with Mongoose operation "find"
+example: mongoose.find({ debt: { $gt: 0 }, userId: '12345abcdefg }) */
+
+const getMongooseQuery = (query, userId) => {
     const mongooseQuery = {}
     if (query) {
         if (query.search) {
@@ -17,6 +20,7 @@ const getMongooseQuery = (query) => {
                 mongooseQuery.debt = { $lte: 0 };
         }
     }
+    mongooseQuery.userId = userId;
     return mongooseQuery;
 
 }

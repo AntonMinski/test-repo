@@ -1,6 +1,7 @@
 const Schema = require('../models/user.schema');
 const jwt = require('jsonwebtoken');
 
+// this middleware only adds user info to the logger
 module.exports = async (req, res, next) => {
     try {
         if (req.headers.authorization) {

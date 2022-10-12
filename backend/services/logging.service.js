@@ -6,17 +6,16 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, '../access.log
 module.exports = (app) => {
 
     morgan.token('user', function (req) {
-        console.log(req.baseUrl)
         return req.userInfo;
     });
 
     app.use(morgan('method: :method; url: :url; date: :date; status: :status; user: :user',
         {
             stream: accessLogStream,
-            skip: (req, res) => !req.baseUrl.includes('auth')
+            skip: (req, res) =>
+                !req.baseUrl?.includes('auth') || !req.url?.includes('auth')
         }
     ));
-
 
     return morgan;
 }

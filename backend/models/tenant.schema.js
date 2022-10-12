@@ -22,6 +22,10 @@ module.exports = mongoose.model(
             debt: {
                 type: Number,
                 default: 0,
+            },
+            userId: {
+                type: String,
+                required: true,
             }
         },
     ),
